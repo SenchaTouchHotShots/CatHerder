@@ -1,0 +1,32 @@
+{
+    "id": "ExtBox1-ext-gen2042",
+    "type": "application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "models": [
+            "Item",
+            "Category"
+        ],
+        "stores": [
+            "itemStore",
+            "categoryStore"
+        ],
+        "views": [
+            "Main",
+            "DetailsPanel"
+        ],
+        "name": "CatHerder",
+        "controllers": [
+            "catController"
+        ]
+    },
+    "customConfigs": [],
+    "designerId": "application",
+    "$viewOrder": 0,
+    "iconCls": "icon-application",
+    "expanded": true
+}

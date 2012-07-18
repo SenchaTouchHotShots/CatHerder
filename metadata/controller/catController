@@ -1,0 +1,16 @@
+{
+    "id": "ExtBox1-ext-gen6546",
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "catController"
+    },
+    "customConfigs": [],
+    "designerId": "3a96ad49-7636-4b99-baca-826ea2698cad",
+    "$viewOrder": 0,
+    "expanded": true
+}
