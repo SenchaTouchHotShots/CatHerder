@@ -20,7 +20,12 @@ Ext.define('CatHerder.view.itemList', {
         id: 'itemList',
         itemId: 'mylist',
         store: 'itemStore',
-	itemTpl: '{category.name}: {name}',
+	itemTpl: [
+	    '{category.name}: {name}',
+	    '<p class="delete" style="position: absolute; right: 5px; top: 20px; display: none;">',
+ 	    '<img src="resources/images/delete.png" alt="delete" />',
+ 	    '</p>'
+	],
         listeners: [
             {
                 fn: 'onMylistItemSwipe',
@@ -34,11 +39,31 @@ Ext.define('CatHerder.view.itemList', {
                 fn: 'onMylistItemSingletap',
                 event: 'itemsingletap'
             }
-        ]
+        ],
+	isDeleting: false
     },
 
     onMylistItemSwipe: function(dataview, index, target, record, e, options) {
-        console.log('Item Swiped');
+	var delBtn = target.down('.delete');
+	Ext.Anim.run(delBtn, 'fade', {
+			out: false,
+			duration: 200
+	});
+	// event
+	delBtn.on('tap', function() {
+	    console.log('Tapped Delete');
+	    console.log(arguments);
+//	    this.deleteItem()
+	}, dataview, {
+	    single: true
+	});
+
+
+	if (this.isDeleting) {
+	    //Hide other delete button.
+	    this.isDeleting.hide();
+	    this.isDeleting = delBtn;
+	}
     },
 
     onMylistItemTaphold: function(dataview, index, target, record, e, options) {
