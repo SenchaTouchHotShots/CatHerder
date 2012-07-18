@@ -7,6 +7,41 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>CatHerder</title>
     <link rel="stylesheet" type="text/css" href="http://extjs.cachefly.net/touch/sencha-touch-2.0.1/resources/css/sencha-touch.css"/>
+    <style type="text/css">
+      @-webkit-keyframes spinIn {
+	  from {
+	      -webkit-transform: rotate(-120deg);
+	  }
+	  to {
+	      -webkit-transform: rotate(0deg);
+	  }
+      }
+      @-webkit-keyframes spinOut {
+	  from {
+	      -webkit-transform: rotate(0deg);
+	  }
+	  to {
+	      -webkit-transform: rotate(-120deg);
+	  }
+      }
+      .delete.hidden {
+	  -webkit-animation-name: spinOut;
+	  -webkit-animation-iteration-count: 1;
+	  -webkit-animation-timing-function: ease-in;
+	  -webkit-animation-duration: 0.5s;
+	  -webkit-transition: opacity 0.5s ease-in;
+	  opacity: 0;
+      }
+
+      .delete.shown {
+	  -webkit-animation-name: spinIn;
+	  -webkit-animation-iteration-count: 1;
+	  -webkit-animation-timing-function: ease-out;
+	  -webkit-animation-duration: 0.5s;
+	  -webkit-transition: opacity 0.5s ease-out;
+	  opacity: 1;
+      }
+    </style>
     <script type="text/javascript" src="http://extjs.cachefly.net/touch/sencha-touch-2.0.1/sencha-touch-all-debug.js"></script>
     <script type="text/javascript" src="app/override.js"></script>
     <script type="text/javascript" src="app.js"></script>
