@@ -28,11 +28,13 @@ Ext.define('CatHerder.view.itemForm', {
             {
                 xtype: 'textfield',
                 id: 'itemName',
+                name: 'name',
                 label: 'Name'
             },
             {
                 xtype: 'selectfield',
-                id: 'itemCategory',
+                id: 'categoryID',
+                name: 'categoryID',
                 margin: '8 0 8 0',
                 label: 'Category',
                 store: 'categoryStore',
@@ -43,12 +45,14 @@ Ext.define('CatHerder.view.itemForm', {
             {
                 xtype: 'textfield',
                 id: 'itemPrice',
+                name: 'price',
                 margin: '8 0 8 0',
                 label: 'Price'
             },
             {
                 xtype: 'urlfield',
                 id: 'itemPhoto',
+                name: 'photoURL',
                 margin: '8 0 8 0',
                 label: 'Photo',
                 placeHolder: 'http://example.com'
@@ -56,7 +60,14 @@ Ext.define('CatHerder.view.itemForm', {
             {
                 xtype: 'textareafield',
                 id: 'itemDescription',
+                name: 'description',
                 label: 'Description'
+            },
+            {
+                xtype: 'hiddenfield',
+                id: 'itemID',
+                name: 'itemID',
+                value: 0
             },
             {
                 xtype: 'button',
@@ -68,6 +79,7 @@ Ext.define('CatHerder.view.itemForm', {
                     console.log(form);
                     var store = Ext.getStore('itemStore');
                     var values = form.getValues();
+                    console.log(values);
                     if(values.itemID > 0) {
                         var index = store.find('itemID', values.itemID);
                         var record = store.getAt(index);
@@ -93,10 +105,6 @@ Ext.define('CatHerder.view.itemForm', {
                     console.log(current);
                     current.setActiveItem(0);
                 }
-            },
-            {
-                xtype: 'hiddenfield',
-                id: 'itemID'
             }
         ]
     }

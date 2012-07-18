@@ -29,11 +29,14 @@ Ext.define('CatHerder.view.categoryForm', {
             {
                 xtype: 'textfield',
                 id: 'categoryName',
+                name: 'name',
                 label: 'Name'
             },
             {
                 xtype: 'hiddenfield',
-                id: 'categoryID'
+                id: 'categoryID',
+                name: 'categoryID',
+                value: 0
             },
             {
                 xtype: 'button',
