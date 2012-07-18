@@ -25,6 +25,7 @@ Ext.define('CatHerder.view.Main', {
             },
             {
                 xtype: 'list',
+                itemId: 'mylist',
                 store: 'itemStore',
                 title: 'Items',
                 iconCls: 'info'
@@ -41,7 +42,36 @@ Ext.define('CatHerder.view.Main', {
         ],
         tabBar: {
             docked: 'bottom'
-        }
+        },
+        listeners: [
+            {
+                fn: 'onMylistItemSwipe',
+                event: 'itemswipe',
+                delegate: '#mylist'
+            },
+            {
+                fn: 'onMylistItemTaphold',
+                event: 'itemtaphold',
+                delegate: '#mylist'
+            },
+            {
+                fn: 'onMylistItemSingletap',
+                event: 'itemsingletap',
+                delegate: '#mylist'
+            }
+        ]
+    },
+
+    onMylistItemSwipe: function(dataview, index, target, record, e, options) {
+        console.log('Item Swiped');
+    },
+
+    onMylistItemTaphold: function(dataview, index, target, record, e, options) {
+        console.log('Item Tap Hold');
+    },
+
+    onMylistItemSingletap: function(dataview, index, target, record, e, options) {
+        console.log('Item Single Tap');
     }
 
 });
