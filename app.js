@@ -28,7 +28,8 @@ Ext.application({
     ],
     views: [
         'Main',
-        'DetailsPanel',
+        'itemDetails',
+        'categoryDetails',
         'categoryForm',
         'itemForm',
         'itemList',

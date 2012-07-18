@@ -13,9 +13,9 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('CatHerder.view.itemDetails', {
+Ext.define('CatHerder.view.categoryDetails', {
     extend: 'Ext.Panel',
-    alias: 'widget.itemdetails',
+    alias: 'widget.categorydetails',
     config: {
         ui: '',
         scrollable: true,
