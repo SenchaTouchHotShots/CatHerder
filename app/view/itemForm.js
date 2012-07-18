@@ -66,8 +66,9 @@ Ext.define('CatHerder.view.itemForm', {
                 margin: 8,
                 ui: 'decline',
                 text: 'Cancel',
-                fn: function(button) {
-                    var current = button.up('container');
+                handler: function() {
+                    var tabs = this.up('tabpanel');
+                    var current = tabs.getActiveItem();
                     console.log(current);
                     current.setActiveItem(0);
                 }
