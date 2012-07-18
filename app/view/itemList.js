@@ -15,7 +15,7 @@
 
 Ext.define('CatHerder.view.itemList', {
     extend: 'Ext.dataview.List',
-
+    alias: 'widget.itemlist',
     config: {
         id: 'itemList',
         itemId: 'mylist',

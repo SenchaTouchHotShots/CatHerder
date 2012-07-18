@@ -26,7 +26,7 @@ Ext.define('CatHerder.model.Category', {
                 name: 'name'
             }
         ],
-        belongsTo: {
+        hasMany: {
             model: 'CatHerder.model.Item',
             name: 'items',
 	    foreignKey: 'categoryID',
