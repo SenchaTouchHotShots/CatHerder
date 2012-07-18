@@ -7,9 +7,9 @@ $test = array(
     'description' => 'Lorem Ipsum',
     'price' => 1.00,
     'photoURL' => 'http://placekitten.com/200/300',
-    'categoryID' => 2,
+    'categoryID' => 1,
     'category' => array(
-      'categoryID' => 2, 'name' => 'Category 2', 'itemID' => 1
+      'categoryID' => 1, 'name' => 'Category 1', 'itemID' => 1
     )
   ),
   array(
@@ -18,9 +18,9 @@ $test = array(
     'description' => 'Lorem Ipsum',
     'price' => 2.00,
     'photoURL' => 'http://placekitten.com/400/300',
-    'categoryID' => 1,
+    'categoryID' => 2,
     'category' => array(
-      'categoryID' => 1, 'name' => 'Category 1', 'itemID' => 2
+      'categoryID' => 2, 'name' => 'Category 2', 'itemID' => 2
     )
   ),
   array(
@@ -29,9 +29,9 @@ $test = array(
     'description' => 'Lorem Ipsum',
     'price' => 3.50,
     'photoURL' => 'http://placekitten.com/200/200',
-    'categoryID' => 2,
+    'categoryID' => 1,
     'category' => array(
-      'categoryID' => 2, 'name' => 'Category 2', 'itemID' => 3
+      'categoryID' => 1, 'name' => 'Category 1', 'itemID' => 3
     )
   )
 );

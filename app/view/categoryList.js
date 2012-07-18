@@ -21,7 +21,7 @@ Ext.define('CatHerder.view.categoryList', {
         id: 'categoryList',
         store: 'categoryStore',
         itemTpl: [
-            '<div>List Item {string}</div>'
+            '<div>{name} -- {[values.items.length]} item(s)</div>'
         ]
     }
 
