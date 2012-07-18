@@ -22,11 +22,6 @@ Ext.define('CatHerder.store.itemStore', {
     config: {
         model: 'CatHerder.model.Item',
         storeId: 'itemStore',
-        proxy: {
-            type: 'jsonp',
-            reader: {
-                type: 'json'
-            }
-        }
+	autoLoad: true
     }
 });

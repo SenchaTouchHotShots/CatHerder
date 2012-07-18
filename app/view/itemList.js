@@ -20,6 +20,7 @@ Ext.define('CatHerder.view.itemList', {
         id: 'itemList',
         itemId: 'mylist',
         store: 'itemStore',
+	itemTpl: '{category.name}: {name}',
         listeners: [
             {
                 fn: 'onMylistItemSwipe',
