@@ -37,13 +37,20 @@ Ext.define('CatHerder.model.Item', {
             },
             {
                 name: 'photoURL'
-            }
+            },
+	    {
+		name: 'categoryID',
+		type: 'int'
+	    }
         ],
-        hasMany: {
-            associationKey: 'categoryID',
+        hasOne: {
             model: 'CatHerder.model.Category',
-            primaryKey: 'categoryID',
-            foreignKey: 'categoryID'
-        }
+            name: 'category',
+	    primaryKey: 'categoryID'
+	},
+	proxy: {
+	    type: 'rest',
+	    url: '/api/item'
+	}
     }
 });

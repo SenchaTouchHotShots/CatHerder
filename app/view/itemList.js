@@ -15,29 +15,67 @@
 
 Ext.define('CatHerder.view.itemList', {
     extend: 'Ext.dataview.List',
-
+    alias: 'widget.itemlist',
     config: {
         id: 'itemList',
         itemId: 'mylist',
         store: 'itemStore',
+	itemTpl: [
+	    '{category.name}: {name}',
+	    '<p class="delete hidden" style="position: absolute; right: 10px; top: 15px;">',
+ 	    '<img src="resources/images/delete.png" alt="delete" />',
+ 	    '</p>'
+	],
         listeners: [
             {
-                fn: 'onMylistItemSwipe',
+                fn: 'onMyListItemSwipe',
                 event: 'itemswipe'
             },
             {
-                fn: 'onMylistItemTaphold',
+                fn: 'onMylistItemTapHold',
                 event: 'itemtaphold'
             },
             {
                 fn: 'onMylistItemSingletap',
                 event: 'itemsingletap'
             }
-        ]
+        ],
+	isDeleting: false
+    },
+    deleteItem: function(record) {
+	Ext.Msg.confirm('Please Confirm', 'Are you sure you want to delete this item?',
+			function() {
+			    this.delRecord.erase();
+			    this.delRecord = false;
+			    this.isDeleting = false;
+			}, this);
     },
 
-    onMylistItemSwipe: function(dataview, index, target, record, e, options) {
-        console.log('Item Swiped');
+    onMyListItemSwipe: function(dataview, index, target, record) {
+	var delBtn = target.down('.delete');
+	this.delRecord = record;
+	delBtn.on('tap', function(evt) {
+	    evt.preventDefault();
+	    this.deleteItem();
+	}, dataview, {
+	    single: true
+	});
+	delBtn.removeCls('hidden');
+	delBtn.addCls('shown');
+
+	if (this.isDeleting) {
+	    //Hide other delete button.
+	    this.isDeleting.addCls('hidden');
+	    this.isDeleting.removeCls('shown');
+	    if (this.isDeleting == delBtn) {
+		this.isDeleting = false;
+		this.delRecord = false;
+	    }
+	} else {
+	    this.isDeleting = delBtn;
+	}
+
+	return true;
     },
 
     onMylistItemTaphold: function(dataview, index, target, record, e, options) {

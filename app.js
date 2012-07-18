@@ -28,10 +28,12 @@ Ext.application({
     ],
     views: [
         'Main',
-        'DetailsPanel',
+        'itemDetails',
+        'categoryDetails',
         'categoryForm',
         'itemForm',
-        'itemList'
+        'itemList',
+        'categoryList'
     ],
     name: 'CatHerder',
     controllers: [
@@ -41,6 +43,7 @@ Ext.application({
     launch: function() {
 
         Ext.create('CatHerder.view.Main', {fullscreen: true});
+
     }
 
 });
