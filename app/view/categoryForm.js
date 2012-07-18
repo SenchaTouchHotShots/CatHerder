@@ -15,6 +15,7 @@
 
 Ext.define('CatHerder.view.categoryForm', {
     extend: 'Ext.form.Panel',
+    alias: 'widget.categoryform',
 
     config: {
         items: [

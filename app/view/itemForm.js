@@ -65,7 +65,12 @@ Ext.define('CatHerder.view.itemForm', {
                 xtype: 'button',
                 margin: 8,
                 ui: 'decline',
-                text: 'Cancel'
+                text: 'Cancel',
+                fn: function(button) {
+                    var current = button.up('container');
+                    console.log(current);
+                    current.setActiveItem(0);
+                }
             },
             {
                 xtype: 'hiddenfield',
