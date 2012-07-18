@@ -22,7 +22,7 @@ Ext.define('CatHerder.view.itemList', {
         store: 'itemStore',
 	itemTpl: [
 	    '{category.name}: {name}',
-	    '<p class="delete hidden" style="position: absolute; right: 10px; top: 15px;">',
+	    '<p class="delete hidden" style="position: absolute; right: 10px; top: 12px;">',
  	    '<img src="resources/images/delete.png" alt="delete" />',
  	    '</p>'
 	],
