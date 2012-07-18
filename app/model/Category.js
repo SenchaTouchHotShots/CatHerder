@@ -19,11 +19,22 @@ Ext.define('CatHerder.model.Category', {
         idProperty: 'categoryID',
         fields: [
             {
-                name: 'categoryID'
+                name: 'categoryID',
+                type: 'int'
             },
             {
                 name: 'name'
             }
-        ]
+        ],
+        belongsTo: {
+            model: 'CatHerder.model.Item',
+            name: 'items',
+	    foreignKey: 'categoryID',
+	    autoLoad: true
+	},
+	proxy: {
+	    type: 'rest',
+	    url: '/api/category'
+	}
     }
 });

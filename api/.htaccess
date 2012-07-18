@@ -1,0 +1,6 @@
+RewriteEngine on
+# Send item requests to item.php
+RewriteRule ^item(/.*)?$ /api/item.php [L]
+
+# Send category requests to category.php
+RewriteRule ^category(/.*)?$ /api/category.php [L]
