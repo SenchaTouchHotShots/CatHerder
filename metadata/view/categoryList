@@ -1,0 +1,19 @@
+{
+    "id": "ExtBox1-ext-gen9157",
+    "type": "list",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "id": "categoryList",
+        "itemTpl": "<div>List Item {string}</div>",
+        "store": "categoryStore",
+        "designer|userClassName": "categoryList"
+    },
+    "customConfigs": [],
+    "designerId": "f9d6ce56-9667-4717-a8c9-46394594f184",
+    "$viewOrder": 5,
+    "expanded": true
+}

@@ -30,42 +30,72 @@
                 "designer|userClassName": "MyToolbar"
             },
             "customConfigs": [],
-            "expanded": true
-        },
-        {
-            "id": "ExtBox1-ext-gen5902",
-            "type": "list",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "store": "itemStore",
-                "designer|userClassName": "MyList1",
-                "title": "Items",
-                "iconCls": "info"
-            },
-            "customConfigs": [],
-            "expanded": true
-        },
-        {
-            "id": "ExtBox1-ext-gen9157",
-            "type": "list",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "itemTpl": "<div>List Item {string}</div>",
-                "store": "categoryStore",
-                "designer|userClassName": "MyList1",
-                "title": "Categories",
-                "iconCls": "info"
-            },
-            "customConfigs": [],
-            "expanded": true
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen13823",
+                    "type": "spacer",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MySpacer"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen12702",
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "mybutton5",
+                        "ui": "action",
+                        "text": "Add",
+                        "designer|userClassName": "MyButton5"
+                    },
+                    "customConfigs": [],
+                    "expanded": true,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen16358",
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onMybutton5Tap",
+                                "implHandler": [
+                                    "var tabs = button.up('tabpanel');",
+                                    "console.log(tabs);",
+                                    "console.log(tabs.getActiveItem());",
+                                    "if(tabs.getActiveItem().id == \"itemList\") {",
+                                    " console.log('show item form');  ",
+                                    "    var panel = Ext.create('CatHerder.view.itemForm');",
+                                    "    tabs.add(panel);",
+                                    "    panel.show();",
+                                    "} else {",
+                                    " console.log('show category form');  ",
+                                    "    ",
+                                    "}"
+                                ],
+                                "name": "tap",
+                                "designer|userClassName": "onMybutton5Tap"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
+                }
+            ]
         },
         {
             "id": "ExtBox1-ext-gen9755",
@@ -81,6 +111,41 @@
             },
             "customConfigs": [],
             "iconCls": "icon-tab-bar",
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen22982",
+            "type": "container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "id": "items",
+                "layout": "card",
+                "designer|userClassName": "MyContainer4",
+                "title": "Items",
+                "iconCls": "info"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen23518",
+            "type": "container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout": "card",
+                "designer|userClassName": "MyContainer5",
+                "title": "Categories",
+                "iconCls": "info"
+            },
+            "customConfigs": [],
             "expanded": true
         }
     ]

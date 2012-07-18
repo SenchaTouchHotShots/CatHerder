@@ -28,7 +28,10 @@ Ext.application({
     ],
     views: [
         'Main',
-        'DetailsPanel'
+        'DetailsPanel',
+        'categoryForm',
+        'itemForm',
+        'itemList'
     ],
     name: 'CatHerder',
     controllers: [

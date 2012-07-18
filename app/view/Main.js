@@ -21,26 +21,61 @@ Ext.define('CatHerder.view.Main', {
             {
                 xtype: 'toolbar',
                 docked: 'top',
-                title: 'Cat Herder'
+                title: 'Cat Herder',
+                items: [
+                    {
+                        xtype: 'spacer'
+                    },
+                    {
+                        xtype: 'button',
+                        itemId: 'mybutton5',
+                        ui: 'action',
+                        text: 'Add'
+                    }
+                ]
             },
             {
-                xtype: 'list',
-                store: 'itemStore',
+                xtype: 'container',
+                id: 'items',
+                layout: {
+                    type: 'card'
+                },
                 title: 'Items',
                 iconCls: 'info'
             },
             {
-                xtype: 'list',
-                itemTpl: [
-                    '<div>List Item {string}</div>'
-                ],
-                store: 'categoryStore',
+                xtype: 'container',
+                layout: {
+                    type: 'card'
+                },
                 title: 'Categories',
                 iconCls: 'info'
             }
         ],
         tabBar: {
             docked: 'bottom'
+        },
+        listeners: [
+            {
+                fn: 'onMybutton5Tap',
+                event: 'tap',
+                delegate: '#mybutton5'
+            }
+        ]
+    },
+
+    onMybutton5Tap: function(button, e, options) {
+        var tabs = button.up('tabpanel');
+        console.log(tabs);
+        console.log(tabs.getActiveItem());
+        if(tabs.getActiveItem().id == "itemList") {
+            console.log('show item form');  
+            var panel = Ext.create('CatHerder.view.itemForm');
+            tabs.add(panel);
+            panel.show();
+        } else {
+            console.log('show category form');  
+
         }
     }
 
