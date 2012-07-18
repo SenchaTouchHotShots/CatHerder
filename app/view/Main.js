@@ -41,7 +41,11 @@ Ext.define('CatHerder.view.Main', {
                     type: 'card'
                 },
                 title: 'Items',
-                iconCls: 'info'
+                iconCls: 'info',
+		items: [
+		    {xtype: 'itemlist'},
+		    {xtype: 'itemform'}
+		]
             },
             {
                 xtype: 'container',
@@ -69,12 +73,12 @@ Ext.define('CatHerder.view.Main', {
         console.log(tabs);
         console.log(tabs.getActiveItem());
         if(tabs.getActiveItem().id == "itemList") {
-            console.log('show item form');  
+            console.log('show item form');
             var panel = Ext.create('CatHerder.view.itemForm');
             tabs.add(panel);
             panel.show();
         } else {
-            console.log('show category form');  
+            console.log('show category form');
 
         }
     }
