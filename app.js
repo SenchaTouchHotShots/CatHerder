@@ -31,7 +31,8 @@ Ext.application({
         'DetailsPanel',
         'categoryForm',
         'itemForm',
-        'itemList'
+        'itemList',
+        'categoryList'
     ],
     name: 'CatHerder',
     controllers: [

@@ -28,7 +28,7 @@ Ext.define('CatHerder.view.Main', {
                     },
                     {
                         xtype: 'button',
-                        itemId: 'mybutton5',
+                        itemId: 'addButton',
                         ui: 'action',
                         text: 'Add'
                     }
@@ -44,7 +44,8 @@ Ext.define('CatHerder.view.Main', {
                 iconCls: 'info',
 		items: [
 		    {xtype: 'itemlist'},
-		    {xtype: 'itemform'}
+		    {xtype: 'itemform'},
+            {xtype: 'itemdetails'}
 		]
             },
             {
@@ -53,7 +54,12 @@ Ext.define('CatHerder.view.Main', {
                     type: 'card'
                 },
                 title: 'Categories',
-                iconCls: 'info'
+                iconCls: 'info',
+                items: [
+                    {xtype: 'categorylist'},
+                    {xtype: 'categoryform'},
+                    {xtype: 'categorydetails'}
+                ]
             }
         ],
         tabBar: {
@@ -61,26 +67,18 @@ Ext.define('CatHerder.view.Main', {
         },
         listeners: [
             {
-                fn: 'onMybutton5Tap',
+                fn: 'onAddButtonTap',
                 event: 'tap',
-                delegate: '#mybutton5'
+                delegate: '#addButton'
             }
         ]
     },
 
-    onMybutton5Tap: function(button, e, options) {
+    onAddButtonTap: function(button, e, options) {
         var tabs = button.up('tabpanel');
-        console.log(tabs);
-        console.log(tabs.getActiveItem());
-        if(tabs.getActiveItem().id == "itemList") {
-            console.log('show item form');
-            var panel = Ext.create('CatHerder.view.itemForm');
-            tabs.add(panel);
-            panel.show();
-        } else {
-            console.log('show category form');
-
-        }
+        var current = tabs.getActiveItem();
+        console.log(current);
+        current.setActiveItem(1);
     }
 
 });
