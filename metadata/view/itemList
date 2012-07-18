@@ -1,0 +1,79 @@
+{
+    "id": "ExtBox1-ext-gen5902",
+    "type": "list",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "id": "itemList",
+        "itemId": "mylist",
+        "itemTpl": null,
+        "store": "itemStore",
+        "designer|userClassName": "itemList"
+    },
+    "customConfigs": [],
+    "designerId": "83946e64-71ea-4353-949a-571d80d28fec",
+    "$viewOrder": 4,
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen2406",
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onMylistItemSwipe",
+                "implHandler": [
+                    "console.log('Item Swiped');"
+                ],
+                "name": "itemswipe",
+                "designer|userClassName": "onMylistItemSwipe"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen2672",
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onMylistItemTaphold",
+                "implHandler": [
+                    "console.log('Item Tap Hold');"
+                ],
+                "name": "itemtaphold",
+                "designer|userClassName": "onMylistItemTaphold"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen2900",
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onMylistItemSingletap",
+                "implHandler": [
+                    "console.log('Item Single Tap');"
+                ],
+                "name": "itemsingletap",
+                "designer|userClassName": "onMylistItemSingletap"
+            },
+            "customConfigs": [],
+            "expanded": true
+        }
+    ]
+}

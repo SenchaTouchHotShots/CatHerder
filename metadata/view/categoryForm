@@ -1,0 +1,101 @@
+{
+    "id": "ExtBox1-ext-gen5051",
+    "type": "formpanel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "categoryForm"
+    },
+    "customConfigs": [],
+    "designerId": "728df53d-0871-4196-a42b-6a15f64191ca",
+    "$viewOrder": 2,
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen6493",
+            "type": "container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "html": "Please enter a category name below:",
+                "id": "categoryText",
+                "margin": 8,
+                "style": "text-align:center;",
+                "designer|userClassName": "MyContainer"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen5290",
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "id": "categoryName",
+                "label": "Name",
+                "designer|userClassName": "MyTextField"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen14100",
+            "type": "hiddenfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "id": "categoryID",
+                "designer|userClassName": "MyHiddenField1"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen5508",
+            "type": "button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "margin": 8,
+                "ui": "confirm",
+                "text": "Save",
+                "designer|userClassName": "MyButton1"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen5676",
+            "type": "button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "margin": 8,
+                "ui": "decline",
+                "text": "Cancel",
+                "designer|userClassName": "MyButton2"
+            },
+            "customConfigs": [],
+            "expanded": true
+        }
+    ]
+}

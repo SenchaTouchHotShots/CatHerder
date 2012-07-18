@@ -74,6 +74,38 @@
                 "app/view/DetailsPanel.js"
             ],
             "className": "DetailsPanel"
+        },
+        "728df53d-0871-4196-a42b-6a15f64191ca": {
+            "paths": [
+                "metadata/view/categoryForm",
+                "app/view/override/categoryForm.js",
+                "app/view/categoryForm.js"
+            ],
+            "className": "categoryForm"
+        },
+        "ee406e8b-e6f6-4c91-9ee5-17df808d494a": {
+            "paths": [
+                "metadata/view/itemForm",
+                "app/view/override/itemForm.js",
+                "app/view/itemForm.js"
+            ],
+            "className": "itemForm"
+        },
+        "83946e64-71ea-4353-949a-571d80d28fec": {
+            "paths": [
+                "metadata/view/itemList",
+                "app/view/override/itemList.js",
+                "app/view/itemList.js"
+            ],
+            "className": "itemList"
+        },
+        "f9d6ce56-9667-4717-a8c9-46394594f184": {
+            "paths": [
+                "metadata/view/categoryList",
+                "app/view/override/categoryList.js",
+                "app/view/categoryList.js"
+            ],
+            "className": "categoryList"
         }
     },
     "expandedState": {
