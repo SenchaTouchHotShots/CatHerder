@@ -50,7 +50,16 @@ Ext.define('CatHerder.model.Item', {
 	},
 	proxy: {
 	    type: 'rest',
-	    url: '/api/item'
+	    url: '/api/item',
+
+            model: 'CatHerder.model.Item',
+            reader: {
+    		type: 'json',
+    		root: 'data',
+    		idProperty: 'itemID',
+        	successProperty: 'success',
+                messageProperty: 'message'
+    	    }
 	}
     }
 });

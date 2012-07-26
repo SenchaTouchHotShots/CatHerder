@@ -28,24 +28,31 @@ Ext.define('CatHerder.view.itemForm', {
             {
                 xtype: 'textfield',
                 id: 'itemName',
+                name: 'name',
                 label: 'Name'
             },
             {
                 xtype: 'selectfield',
-                id: 'itemCategory',
+                id: 'categoryID',
+                name: 'categoryID',
                 margin: '8 0 8 0',
                 label: 'Category',
-                store: 'categoryStore'
+                store: 'categoryStore',
+                displayField: 'name',
+                valueField: 'categoryID'
+
             },
             {
                 xtype: 'textfield',
                 id: 'itemPrice',
+                name: 'price',
                 margin: '8 0 8 0',
                 label: 'Price'
             },
             {
                 xtype: 'urlfield',
                 id: 'itemPhoto',
+                name: 'photoURL',
                 margin: '8 0 8 0',
                 label: 'Photo',
                 placeHolder: 'http://example.com'
@@ -53,28 +60,60 @@ Ext.define('CatHerder.view.itemForm', {
             {
                 xtype: 'textareafield',
                 id: 'itemDescription',
+                name: 'description',
                 label: 'Description'
+            },
+            {
+                xtype: 'hiddenfield',
+                id: 'itemID',
+                name: 'itemID',
+                value: 0
             },
             {
                 xtype: 'button',
                 margin: 8,
                 ui: 'confirm',
-                text: 'Save'
+                text: 'Save',
+                handler: function() {
+                    var form = this.up('formpanel');
+                    console.log(form);
+                    var store = Ext.getStore('itemStore');
+                    var values = form.getValues();
+                    console.log(values);
+                    if(values.itemID > 0) {
+                        console.log('edit');
+                        var index = store.find('itemID', values.itemID);
+                        var record = store.getAt(index);
+                        record.set(values);
+                    } else {
+                        var record = Ext.ModelMgr.create(form.getValues(), 'CatHerder.model.Item');
+                        console.log('add');
+                    }
+                    record.save({
+                        success: function(savedRecord) {
+                            store.load();
+                        },
+                        failure: function() {
+                            store.load();
+                        }
+                    });
+                    var tabs = this.up('tabpanel');
+                    var current = tabs.getActiveItem();
+                    console.log(current);
+                    current.setActiveItem(0);
+                }
             },
             {
                 xtype: 'button',
                 margin: 8,
                 ui: 'decline',
                 text: 'Cancel',
-                fn: function(button) {
-                    var current = button.up('container');
+                handler: function() {
+                    var tabs = this.up('tabpanel');
+                    var current = tabs.getActiveItem();
                     console.log(current);
                     current.setActiveItem(0);
                 }
-            },
-            {
-                xtype: 'hiddenfield',
-                id: 'itemID'
             }
         ]
     }

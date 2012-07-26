@@ -29,23 +29,50 @@ Ext.define('CatHerder.view.categoryForm', {
             {
                 xtype: 'textfield',
                 id: 'categoryName',
+                name: 'name',
                 label: 'Name'
             },
             {
                 xtype: 'hiddenfield',
-                id: 'categoryID'
+                id: 'categoryID',
+                name: 'categoryID',
+                value: 0
             },
             {
                 xtype: 'button',
                 margin: 8,
                 ui: 'confirm',
-                text: 'Save'
+                text: 'Save',
+                handler: function() {
+                    var form = this.up('formpanel');
+                    console.log(form);
+                    var store = Ext.getStore('categoryStore');
+                    var values = form.getValues();
+                    if(values.categoryID > 0) {
+                        var index = store.find('categoryID', values.categoryID);
+                        var record = store.getAt(index);
+                        record.set(values);
+                    } else {
+                        var record = Ext.ModelMgr.create(form.getValues(), 'CatHerder.model.Category');
+                    }
+                    record.save();
+                    var tabs = this.up('tabpanel');
+                    var current = tabs.getActiveItem();
+                    console.log(current);
+                    current.setActiveItem(0);
+                }
             },
             {
                 xtype: 'button',
                 margin: 8,
                 ui: 'decline',
-                text: 'Cancel'
+                text: 'Cancel',
+                handler: function() {
+                    var tabs = this.up('tabpanel');
+                    var current = tabs.getActiveItem();
+                    console.log(current);
+                    current.setActiveItem(0);
+                }
             }
         ]
     }

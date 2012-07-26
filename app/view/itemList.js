@@ -22,7 +22,7 @@ Ext.define('CatHerder.view.itemList', {
         store: 'itemStore',
 	itemTpl: [
 	    '{category.name}: {name}',
-	    '<p class="delete hidden" style="position: absolute; right: 10px; top: 15px;">',
+	    '<p class="delete hidden" style="position: absolute; right: 10px; top: 12px;">',
  	    '<img src="resources/images/delete.png" alt="delete" />',
  	    '</p>'
 	],
@@ -45,7 +45,15 @@ Ext.define('CatHerder.view.itemList', {
     deleteItem: function(record) {
 	Ext.Msg.confirm('Please Confirm', 'Are you sure you want to delete this item?',
 			function() {
-			    this.delRecord.erase();
+                            var store = Ext.getStore('itemStore');
+			    this.delRecord.erase({
+                                success: function(savedRecord) {
+                                    store.load();
+                                },
+                                failure: function() {
+                                    store.load();
+                                }
+                            });
 			    this.delRecord = false;
 			    this.isDeleting = false;
 			}, this);
@@ -83,7 +91,14 @@ Ext.define('CatHerder.view.itemList', {
     },
 
     onMylistItemSingletap: function(dataview, index, target, record, e, options) {
+        if (!this.isDeleting) {
         console.log('Item Single Tap');
+        var cards = dataview.up('container');
+        cards.setActiveItem(2);
+        var details = cards.getActiveItem();
+        details.down('titlebar').setTitle(record.data.name);
+            details.setRecord(record);
+        }
     }
 
 });

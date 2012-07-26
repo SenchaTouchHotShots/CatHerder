@@ -33,11 +33,12 @@ $test = array(
 	'description' => 'Lorem Ipsum',
 	'price' => 2.00,
 	'photoURL' => 'http://placekitten.com/400/300',
-	'categoryID' => 2	
+	'categoryID' => 2
       )
     )
-  ) 
+  )
 );
 
 
 echo json_encode($test);
+?>

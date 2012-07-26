@@ -23,5 +23,6 @@ Ext.define('CatHerder.store.itemStore', {
         model: 'CatHerder.model.Item',
         storeId: 'itemStore',
 	autoLoad: true
+
     }
 });

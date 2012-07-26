@@ -1,5 +1,4 @@
-<?PHP
-
+<?php
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL ^ E_NOTICE);
@@ -38,10 +37,7 @@ function doGet() {
             $row['category'] = getCategory($row['categoryID'], $db);
             doJson($row);
         } else {
-            doJson(array(
-                'success' => FALSE,
-                'error' => $stmt->errorInfo()
-            ));
+            doJson(array(), false, $stmt->errorInfo());
         }
     } else {
         $data = array();
@@ -69,25 +65,62 @@ function doGet() {
             $data[] = $row;
         }
         
-        doJson($data);
+        echo json_encode($data);
+        exit;
     }
 }
 
 function doPost() {
-
+    /* We are editing an existing item */
+    doJson(array());
 }
 
 function doPut() {
+    /* We are adding a new item */
+    /* Our variables are sent as a raw http post, not as a post var */
+    $data = getJsonPayload();
+    if ($data['itemID'] == 0) {
+    unset($data['itemID']);
+    $inserting = TRUE;
+    $sql = "insert into `items` (`itemID`, `name`, `description`, `price`, `photoURL`, `categoryID`) values (NULL, :name, :description, :price, :photoURL, :categoryID)";
+    } else {
+        $inserting = FALSE;
+        $sql = "update `items` set `itemID` = :itemID, `name` = :name, `description` = :description, `price` = :price, `photoURL` = :photoURL, `categoryID` = :categoryID where `itemID` = :itemID";
+    }
+    $db = dbSetup();
 
+
+    /* Prepare our data. Here is where you should add filtering, etc. */
+    $insert = array();
+    foreach ($data as $key => $val) {
+        $insert[':'.$key] = $val;
+    }
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute($insert);
+    if ($inserting) {
+        $data['itemID'] = $db->lastInsertId();
+    }
+    $data['category'] = getCategory($data['categoryID'],$db);
+    doJson($data);
 }
 
 function doDelete() {
-
+    $db = dbSetup();
+    $data = getJsonPayload();
+    $itemID = array($data['itemID']);
+    $sql = 'delete from items where itemID = ?';
+    $stmt = $db->prepare($sql);
+    $stmt->execute($itemID);
+    echo json_encode($data);
 }
 
-function doJson($data) {
-    
-    echo json_encode($data);
+function doJson($data, $success = true, $message = '') {
+    $output = array('success' => $success, 'data' => $data);
+    if ($message != '') {
+        $output['message'] = $message;
+    }
+    echo json_encode($output);
     
 }
 
@@ -106,4 +139,8 @@ function getCategory($id, $db) {
     }
     return $category;
 
+}
+
+function getJsonPayload() {
+    return json_decode(file_get_contents('php://input'), true);
 }

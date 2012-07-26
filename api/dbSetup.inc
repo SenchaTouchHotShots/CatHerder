@@ -3,8 +3,8 @@
 
 function dbSetup() {
     static $db = NULL;
-    $dbuser = '';
-    $dbpass = '';
+    $dbuser = 'genericUser';
+    $dbpass = 'anand1st';
     $dbname = 'test';
     $dbhost = '127.0.0.1';
     
