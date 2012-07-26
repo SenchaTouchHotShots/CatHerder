@@ -81,11 +81,13 @@ Ext.define('CatHerder.view.itemForm', {
                     var values = form.getValues();
                     console.log(values);
                     if(values.itemID > 0) {
+                        console.log('edit');
                         var index = store.find('itemID', values.itemID);
                         var record = store.getAt(index);
                         record.set(values);
                     } else {
                         var record = Ext.ModelMgr.create(form.getValues(), 'CatHerder.model.Item');
+                        console.log('add');
                     }
                     record.save();
                     var tabs = this.up('tabpanel');

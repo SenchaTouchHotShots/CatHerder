@@ -37,3 +37,4 @@ $test = array(
 );
 
 echo json_encode($test);
+?>

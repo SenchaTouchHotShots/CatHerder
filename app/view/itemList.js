@@ -84,6 +84,11 @@ Ext.define('CatHerder.view.itemList', {
 
     onMylistItemSingletap: function(dataview, index, target, record, e, options) {
         console.log('Item Single Tap');
+        var cards = dataview.up('container');
+        cards.setActiveItem(2);
+        var details = cards.getActiveItem();
+        details.down('titlebar').setTitle(record.data.name);
+        details.setRecord(record);
     }
 
 });
