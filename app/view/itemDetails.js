@@ -19,19 +19,55 @@ Ext.define('CatHerder.view.itemDetails', {
     config: {
         ui: '',
         scrollable: true,
+        tpl: '<img src="{photoURL}"><br />Catalog#: {itemID}<br />Name: {name}<br />Price: ${price}<br />Description: {description}<br />',
         items: [
             {
                 xtype: 'titlebar',
                 docked: 'top',
+                title: 'Item Name Here',
                 items: [
                     {
                         xtype: 'button',
                         ui: 'back',
-                        text: 'Back'
+                        text: 'Back',
+                        id: 'BackToItemButton'
+                    },
+                    {
+                        xtype: 'button',
+                        text: 'Edit',
+                        id: 'editItemButton',
+                        align: 'right'
                     }
                 ]
             }
+        ],
+        listeners: [
+            {
+                fn: 'onEditItemTap',
+                event: 'tap',
+                delegate: '#editItemButton'
+            }, {
+                fn: 'onBackItemTap',
+                event: 'tap',
+                delegate: '#BackToItemButton'
+            }
         ]
+    },
+    onEditItemTap: function(button, e, options) {
+        var tabs = button.up('tabpanel');
+        var current = tabs.getActiveItem();
+        console.log(current);
+        var details = current.getActiveItem();
+        var rec = details.getRecord();
+        console.log(rec);
+        current.setActiveItem(1);
+        var form = current.getActiveItem();
+        form.setRecord(rec);
+    },
+    onBackItemTap: function(button, e, options) {
+        var tabs = button.up('tabpanel');
+        var current = tabs.getActiveItem();
+        current.setActiveItem(0);
     }
 
 });

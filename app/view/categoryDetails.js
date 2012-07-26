@@ -17,21 +17,56 @@ Ext.define('CatHerder.view.categoryDetails', {
     extend: 'Ext.Panel',
     alias: 'widget.categorydetails',
     config: {
-        ui: '',
+        tpl: 'Name: {name}<br />Contains {[values.items.length]} Item(s)',
         scrollable: true,
         items: [
             {
                 xtype: 'titlebar',
                 docked: 'top',
+                title: 'Category Name Here',
                 items: [
                     {
                         xtype: 'button',
                         ui: 'back',
-                        text: 'Back'
+                        text: 'Back',
+                        id: 'BackToCategoryButton'
+                    },
+                    {
+                        xtype: 'button',
+                        text: 'Edit',
+                        id: 'editCategoryButton',
+                        align: 'right'
                     }
                 ]
             }
+        ],
+        listeners: [
+            {
+                fn: 'onEditCategoryTap',
+                event: 'tap',
+                delegate: '#editCategoryButton'
+            }, {
+                fn: 'onBackCategoryTap',
+                event: 'tap',
+                delegate: '#BackToCategoryButton'
+            }
         ]
+    },
+    onEditCategoryTap: function(button, e, options) {
+        var tabs = button.up('tabpanel');
+        var current = tabs.getActiveItem();
+        console.log(current);
+        var details = current.getActiveItem();
+        var rec = details.getRecord();
+        console.log(rec);
+        current.setActiveItem(1);
+        var form = current.getActiveItem();
+        form.setRecord(rec);
+    },
+    onBackCategoryTap: function(button, e, options) {
+        var tabs = button.up('tabpanel');
+        var current = tabs.getActiveItem();
+        current.setActiveItem(0);
     }
 
 });
