@@ -83,7 +83,7 @@ Ext.define('CatHerder.view.categoryList', {
         console.log('Category Single Tap');
         var cards = dataview.up('container');
         cards.setActiveItem(2);
-        console.log(record.data);
+        console.log(record);
         var details = cards.getActiveItem();
         details.down('titlebar').setTitle(record.data.name);
         details.setRecord(record);

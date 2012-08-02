@@ -45,8 +45,7 @@ Ext.define('CatHerder.model.Item', {
         ],
         hasOne: {
             model: 'CatHerder.model.Category',
-            name: 'category',
-	    primaryKey: 'categoryID'
+            name: 'category'
 	},
 	proxy: {
 	    type: 'rest',

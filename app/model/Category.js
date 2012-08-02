@@ -14,27 +14,26 @@
  */
 
 Ext.define('CatHerder.model.Category', {
-    extend: 'Ext.data.Model',
-    config: {
-        idProperty: 'categoryID',
-        fields: [
+    extend:'Ext.data.Model',
+    config:{
+        idProperty:'categoryID',
+        fields:[
             {
-                name: 'categoryID',
-                type: 'int'
+                name:'categoryID',
+                type:'int'
             },
             {
-                name: 'name'
+                name:'name'
             }
         ],
-        hasMany: {
-            model: 'CatHerder.model.Item',
-            name: 'items',
-	    foreignKey: 'categoryID',
-	    autoLoad: true
-	},
-	proxy: {
-	    type: 'rest',
-	    url: '/api/category'
-	}
+        hasMany:{
+            model:'CatHerder.model.Item',
+            name:'items',
+            autoLoad:false
+        },
+        proxy:{
+            type:'rest',
+            url:'/api/category'
+        }
     }
 });
