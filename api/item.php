@@ -93,7 +93,9 @@ function doPut() {
     /* Prepare our data. Here is where you should add filtering, etc. */
     $insert = array();
     foreach ($data as $key => $val) {
-        $insert[':'.$key] = $val;
+        if ($key != "category_id") {
+            $insert[':'.$key] = $val;
+        }
     }
 
     $stmt = $db->prepare($sql);
